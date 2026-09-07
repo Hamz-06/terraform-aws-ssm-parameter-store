@@ -1,0 +1,8 @@
+{
+  "name": "terraform-aws-ssm-parameter-store",
+  "version": "0.0.0",
+  "private": true,
+  "devDependencies": {
+    "@changesets/cli": "^3.0.2"
+  }
+}
