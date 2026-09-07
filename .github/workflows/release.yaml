@@ -1,19 +1,37 @@
-name: Release Please
+name: Release
 
 on:
   push:
     branches:
       - main
 
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
 permissions:
   contents: write
-  pull-requests: write
 
 jobs:
-  release-please:
+  release:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: googleapis/release-please-action@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
         with:
-          release-type: simple
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Version is bumped locally via `npx changeset version` before pushing;
+      # this only tags the version already committed to package.json.
+      - name: Tag release
+        run: npx changeset tag
+
+      - name: Push tags
+        run: git push --follow-tags

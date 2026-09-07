@@ -63,8 +63,8 @@ consumers reference in their `source`/`ref`.
    This consumes the pending changeset files, bumps the `version` in
    `package.json`, and updates `CHANGELOG.md`.
 
-3. Commit the version bump, then tag and push it so consumers can reference it:
-   ```sh
-   git tag v$(node -p "require('./package.json').version")
-   git push origin main --tags
-   ```
+3. Commit the version bump and push to `main`. The `Release` GitHub Actions
+   workflow ([.github/workflows/release.yaml](.github/workflows/release.yaml))
+   automatically tags the commit with `v<version>` from `package.json` and
+   pushes the tag — no manual `git tag`/`git push --tags` needed. Consumers
+   reference that tag in their `source`/`ref`.

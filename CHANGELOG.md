@@ -1,5 +1,11 @@
 # terraform-aws-ssm-parameter-store
 
+## 1.0.1
+
+### Patch Changes
+
+- patch release yaml
+
 ## 1.0.0
 
 ### Major Changes
