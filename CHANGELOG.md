@@ -1,5 +1,11 @@
 # terraform-aws-ssm-parameter-store
 
+## 1.0.2
+
+### Patch Changes
+
+- remove env variable validation
+
 ## 1.0.1
 
 ### Patch Changes
